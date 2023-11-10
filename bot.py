@@ -15,29 +15,42 @@ from vendeeglobe import (
     config,
 )
 from vendeeglobe.utils import distance_on_surface
+from vendeeglobe import config
 
-CREATOR = "TeamName"  # This is your team name
+CREATOR = "KRAKEN"  # This is your team name
 
 
 class Bot:
     """
     This is the ship-controlling bot that will be instantiated for the competition.
     """
+    print(config.checkpoints[0])
+    print(config.checkpoints[1])
 
     def __init__(self):
         self.team = CREATOR  # Mandatory attribute
-        self.avatar = 1  # Optional attribute
+        self.avatar = "../../afonsos_bot/kraken.png"  # Optional attribute
         self.course = [
             Checkpoint(latitude=43.797109, longitude=-11.264905, radius=50),
             Checkpoint(longitude=-29.908577, latitude=17.999811, radius=50),
-            Checkpoint(latitude=-11.441808, longitude=-29.660252, radius=50),
-            Checkpoint(longitude=-63.240264, latitude=-61.025125, radius=50),
-            Checkpoint(latitude=2.806318, longitude=-168.943864, radius=1990.0),
-            Checkpoint(latitude=-62.052286, longitude=169.214572, radius=50.0),
-            Checkpoint(latitude=-15.668984, longitude=77.674694, radius=1190.0),
-            Checkpoint(latitude=-39.438937, longitude=19.836265, radius=50.0),
-            Checkpoint(latitude=14.881699, longitude=-21.024326, radius=50.0),
-            Checkpoint(latitude=44.076538, longitude=-18.292936, radius=50.0),
+            Checkpoint(latitude=11.639738, longitude=-52.786058, radius=10),
+            Checkpoint(latitude=11.820852, longitude=-60.555078, radius=10),
+            Checkpoint(latitude=11.706513, longitude=-62.714800, radius=5),
+            Checkpoint(latitude=14.950796, longitude=-73.025302, radius=15),
+            Checkpoint(latitude=10.184482, longitude=-79.971065, radius=5),
+            Checkpoint(latitude=9.477217, longitude=-79.951065, radius=5),
+            Checkpoint(latitude=9.193906, longitude=-80.009630, radius=5),
+            Checkpoint(latitude=8.869758, longitude=-79.461705, radius=5),
+            Checkpoint(latitude=4.202637, longitude=-78.753701, radius=5),
+            Checkpoint(latitude=3.802786, longitude=-87.740018, radius=5),
+            Checkpoint(latitude=2.806318, longitude=-168.943864, radius=1950),
+            Checkpoint(latitude=-5.600926, longitude=-153.607253, radius=5),
+            Checkpoint(latitude=-14.600926, longitude=-160.607253, radius=5),
+            Checkpoint(latitude=-16.861951, longitude=-169.998368, radius=5),
+            Checkpoint(latitude=-20.444844, longitude=-172.330914, radius=5),
+            Checkpoint(latitude=-41.289193, longitude=-176.327763, radius=5),
+            Checkpoint(latitude=-44.648524, longitude=174.505348, radius=5),
+            Checkpoint(latitude=-49.497799, longitude=169.788539, radius=5),
             Checkpoint(
                 latitude=config.start.latitude,
                 longitude=config.start.longitude,
