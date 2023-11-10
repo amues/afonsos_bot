@@ -2,6 +2,7 @@
 
 # flake8: noqa F401
 
+import random
 import numpy as np
 
 from vendeeglobe import (
@@ -30,6 +31,39 @@ class Bot:
     def __init__(self):
         self.team = CREATOR  # Mandatory attribute
         self.avatar = "../../afonsos_bot/kraken.png"  # Optional attribute
+        self.course_plus = [
+            (Checkpoint(latitude=43.797109, longitude=-11.264905, radius=50), False),
+            (Checkpoint(longitude=-29.908577, latitude=17.999811, radius=50), False),
+            (Checkpoint(latitude=11.639738, longitude=-52.786058, radius=10), False),
+            (Checkpoint(latitude=11.820852, longitude=-60.555078, radius=10), False),
+            (Checkpoint(latitude=11.706513, longitude=-62.714800, radius=5), True),
+            (Checkpoint(latitude=14.950796, longitude=-73.025302, radius=15), True),
+            (Checkpoint(latitude=10.184482, longitude=-79.971065, radius=5), True),
+            (Checkpoint(latitude=9.477217, longitude=-79.951065, radius=5), True),
+            (Checkpoint(latitude=9.193906, longitude=-80.009630, radius=5), True),
+            (Checkpoint(latitude=8.869758, longitude=-79.461705, radius=5), True),
+            (Checkpoint(latitude=4.202637, longitude=-78.753701, radius=5), True),
+            (Checkpoint(latitude=3.802786, longitude=-87.740018, radius=5), True),
+            (Checkpoint(latitude=2.806318, longitude=-168.943864, radius=1950), False),
+            (Checkpoint(latitude=-5.600926, longitude=-153.607253, radius=5), False),
+            (Checkpoint(latitude=-14.600926, longitude=-160.607253, radius=5), False),
+            (Checkpoint(latitude=-16.861951, longitude=-169.998368, radius=5), False),
+            (Checkpoint(latitude=-20.444844, longitude=-172.330914, radius=5), False),
+            (Checkpoint(latitude=-41.289193, longitude=-176.327763, radius=5), False),
+            (Checkpoint(latitude=-44.648524, longitude=174.505348, radius=5), False),
+            (Checkpoint(latitude=-49.497799, longitude=169.788539, radius=5), False),
+            (Checkpoint(latitude=-40.079012, longitude=110.808236, radius=5), False),
+            (Checkpoint(latitude=-15.668984, longitude=77.674694, radius=1190), False),
+            (Checkpoint(latitude=-37.071050, longitude=20.809699, radius=5), False),
+            (Checkpoint(latitude=-14.836600, longitude=-26.123895, radius=5), False),
+            (Checkpoint(latitude=16.538295, longitude=-20.081214, radius=5), False),
+            (Checkpoint(latitude=43.249473, longitude=-21.292899, radius=5), False),
+            (Checkpoint(
+                latitude=config.start.latitude,
+                longitude=config.start.longitude,
+                radius=5,
+            ), False),
+        ]
         self.course = [
             Checkpoint(latitude=43.797109, longitude=-11.264905, radius=50),
             Checkpoint(longitude=-29.908577, latitude=17.999811, radius=50),
@@ -63,7 +97,7 @@ class Bot:
                 radius=5,
             ),
         ]
-
+        
     def run(
         self,
         t: float,
@@ -102,7 +136,9 @@ class Bot:
             The map of the world: 1 for sea, 0 for land.
         """
         instructions = Instructions()
-        for ch in self.course:
+        for ch_plus in self.course_plus:
+            ch = ch_plus[0]
+            is_critical = ch_plus[1]
             dist = distance_on_surface(
                 longitude1=longitude,
                 latitude1=latitude,
@@ -117,9 +153,16 @@ class Bot:
             if dist < ch.radius:
                 ch.reached = True
             if not ch.reached:
-                instructions.location = Location(
-                    longitude=ch.longitude, latitude=ch.latitude
-                )
+                s = np.linalg.norm(speed)
+                if is_critical or s > 30 or np.isnan(s) or s == 0:
+                    instructions.location = Location(
+                        longitude=ch.longitude, latitude=ch.latitude
+                    )
+                else:
+                    instructions.location = Location(
+                        longitude=(ch.longitude + random.gauss(0, min(2.5/s, 5))) % 180, latitude=(ch.latitude + random.gauss(0, min(2.5/s, 5))) % 90
+                    )
                 break
+
 
         return instructions
