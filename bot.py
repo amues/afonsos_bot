@@ -17,7 +17,7 @@ from vendeeglobe import (
 from vendeeglobe.utils import distance_on_surface
 from vendeeglobe import config
 
-CREATOR = "KRAKEN"  # This is your team name
+CREATOR = "🦑 ☠☠𝕂ℝÄ𝕂Ëℕ☠☠ 🐙"  # This is your team name
 
 
 class Bot:
@@ -51,6 +51,12 @@ class Bot:
             Checkpoint(latitude=-41.289193, longitude=-176.327763, radius=5),
             Checkpoint(latitude=-44.648524, longitude=174.505348, radius=5),
             Checkpoint(latitude=-49.497799, longitude=169.788539, radius=5),
+            Checkpoint(latitude=-40.079012, longitude=110.808236, radius=5),
+            Checkpoint(latitude=-15.668984, longitude=77.674694, radius=1190),
+            Checkpoint(latitude=-37.071050, longitude=20.809699, radius=5),
+            Checkpoint(latitude=-14.836600, longitude=-26.123895, radius=5),
+            Checkpoint(latitude=16.538295, longitude=-20.081214, radius=5),
+            Checkpoint(latitude=43.249473, longitude=-21.292899, radius=5),
             Checkpoint(
                 latitude=config.start.latitude,
                 longitude=config.start.longitude,
