@@ -154,7 +154,7 @@ class Bot:
                 ch.reached = True
             if not ch.reached:
                 s = np.linalg.norm(speed)
-                if is_critical or s > 30 or np.isnan(s) or s == 0:
+                if is_critical or s > 20 or np.isnan(s) or s == 0:
                     instructions.location = Location(
                         longitude=ch.longitude, latitude=ch.latitude
                     )
