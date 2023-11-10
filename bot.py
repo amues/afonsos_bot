@@ -44,6 +44,7 @@ class Bot:
             (Checkpoint(latitude=8.869758, longitude=-79.461705, radius=5), True),
             (Checkpoint(latitude=4.202637, longitude=-78.753701, radius=5), True),
             (Checkpoint(latitude=3.802786, longitude=-87.740018, radius=5), True),
+            (Checkpoint(latitude=3.601631, longitude=-112.727503, radius=5), False),
             (Checkpoint(latitude=2.806318, longitude=-168.943864, radius=1950), False),
             (Checkpoint(latitude=-5.600926, longitude=-153.607253, radius=5), False),
             (Checkpoint(latitude=-14.600926, longitude=-160.607253, radius=5), False),
@@ -51,11 +52,13 @@ class Bot:
             (Checkpoint(latitude=-20.444844, longitude=-172.330914, radius=5), False),
             (Checkpoint(latitude=-41.289193, longitude=-176.327763, radius=5), False),
             (Checkpoint(latitude=-44.648524, longitude=174.505348, radius=5), False),
-            (Checkpoint(latitude=-49.497799, longitude=169.788539, radius=5), False),
-            (Checkpoint(latitude=-40.079012, longitude=110.808236, radius=5), False),
+            (Checkpoint(latitude=-49.497799, longitude=169.788539, radius=10), False),
+            (Checkpoint(latitude=-40.079012, longitude=110.808236, radius=10), False),
             (Checkpoint(latitude=-15.668984, longitude=77.674694, radius=1190), False),
             (Checkpoint(latitude=-37.071050, longitude=20.809699, radius=5), False),
-            (Checkpoint(latitude=-14.836600, longitude=-26.123895, radius=5), False),
+            (Checkpoint(latitude=-15.500300, longitude=4.349726, radius=5), False),
+            (Checkpoint(latitude=-2.500340, longitude=-8.445598, radius=5), False),
+            (Checkpoint(latitude=9.593052, longitude=-22.881598, radius=5), False),
             (Checkpoint(latitude=16.538295, longitude=-20.081214, radius=5), False),
             (Checkpoint(latitude=43.249473, longitude=-21.292899, radius=5), False),
             (Checkpoint(
@@ -77,6 +80,7 @@ class Bot:
             Checkpoint(latitude=8.869758, longitude=-79.461705, radius=5),
             Checkpoint(latitude=4.202637, longitude=-78.753701, radius=5),
             Checkpoint(latitude=3.802786, longitude=-87.740018, radius=5),
+            Checkpoint(latitude=3.601631, longitude=-112.727503, radius=5),
             Checkpoint(latitude=2.806318, longitude=-168.943864, radius=1950),
             Checkpoint(latitude=-5.600926, longitude=-153.607253, radius=5),
             Checkpoint(latitude=-14.600926, longitude=-160.607253, radius=5),
@@ -84,11 +88,13 @@ class Bot:
             Checkpoint(latitude=-20.444844, longitude=-172.330914, radius=5),
             Checkpoint(latitude=-41.289193, longitude=-176.327763, radius=5),
             Checkpoint(latitude=-44.648524, longitude=174.505348, radius=5),
-            Checkpoint(latitude=-49.497799, longitude=169.788539, radius=5),
-            Checkpoint(latitude=-40.079012, longitude=110.808236, radius=5),
+            Checkpoint(latitude=-49.497799, longitude=169.788539, radius=10),
+            Checkpoint(latitude=-40.079012, longitude=110.808236, radius=10),
             Checkpoint(latitude=-15.668984, longitude=77.674694, radius=1190),
             Checkpoint(latitude=-37.071050, longitude=20.809699, radius=5),
-            Checkpoint(latitude=-14.836600, longitude=-26.123895, radius=5),
+            Checkpoint(latitude=-15.500300, longitude=4.349726, radius=5),
+            Checkpoint(latitude=-2.500340, longitude=-8.445598, radius=5),
+            Checkpoint(latitude=9.593052, longitude=-22.881598, radius=5),
             Checkpoint(latitude=16.538295, longitude=-20.081214, radius=5),
             Checkpoint(latitude=43.249473, longitude=-21.292899, radius=5),
             Checkpoint(
@@ -159,12 +165,12 @@ class Bot:
                         longitude=ch.longitude, latitude=ch.latitude
                     )
                 else:
-                    x = ch.longitude + random.gauss(0, min(5/s, 15))
+                    x = ch.longitude + random.gauss(0, min(5/s, 4))
                     if x < 180: 
                         x += 360
                     elif x > 180:
                         x -= 360
-                    y = ch.latitude + random.gauss(0, min(5/s, 15))
+                    y = ch.latitude + random.gauss(0, min(5/s, 4))
                     instructions.location = Location(
                         longitude=x, latitude=y
                     )
