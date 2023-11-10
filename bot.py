@@ -159,12 +159,12 @@ class Bot:
                         longitude=ch.longitude, latitude=ch.latitude
                     )
                 else:
-                    x = ch.longitude + random.gauss(0, min(2.5/s, 1))
+                    x = ch.longitude + random.gauss(0, min(2.5/s, 10))
                     if x < 180: 
                         x += 360
                     elif x > 180:
                         x -= 360
-                    y = ch.latitude + random.gauss(0, min(2.5/s, 1))
+                    y = ch.latitude + random.gauss(0, min(2.5/s, 10))
                     instructions.location = Location(
                         longitude=x, latitude=y
                     )
