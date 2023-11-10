@@ -65,7 +65,7 @@ class Bot:
                 latitude=config.start.latitude,
                 longitude=config.start.longitude,
                 radius=5,
-            ), False),
+            ), True),
         ]
         self.course = [
             Checkpoint(latitude=43.797109, longitude=-11.264905, radius=50),
